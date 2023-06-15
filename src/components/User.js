@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-
+import "./User.css"
 
 function User() {
 
@@ -40,26 +40,55 @@ function User() {
     // console.log(floorOptions);
 
     
+    // const renderFloorSeats = () => {
+    //     return (
+    //         <div>
+    //         {availableSeats.length > 0 ? (
+    //             <div>
+    //                 <p>Floor {selectedFloor}: Total of {availableSeats.length} seats are available</p>
+    //                 <ul>
+    //                 {availableSeats.map((seat) => (
+    //                     <div>
+    //                         {seat}
+    //                     </div>
+    //                 ))}
+    //                 </ul>
+    //             </div>
+    //         ) : (
+    //             <p>No available seats</p>
+    //         )}
+    //         </div>
+    //     );
+    //     };
     const renderFloorSeats = () => {
         return (
-            <div>
-            {availableSeats.length > 0 ? (
                 <div>
-                    <p>Floor {selectedFloor}: Total of {availableSeats.length} seats are available</p>
+                {availableSeats.length > 0 ? (
+                    <div>
+                    <p>
+                        Floor {selectedFloor}: Total of {availableSeats.length} seats
+                        are available
+                    </p>
                     <ul>
-                    {availableSeats.map((seat) => (
-                        <div>
-                            {seat}
+                        {availableSeats.map((seat) => (
+                        <div className="seat-container" key={seat}>
+                            <img
+                            src="https://previews.123rf.com/images/ruslanraqimov/ruslanraqimov2001/ruslanraqimov200100027/136976529-isolated-sport-car-seat-vector-10-eps.jpg"
+                            alt="Seat"
+                            className="seat-image"
+                            />
+                            <span className="seat-number">{seat}</span>
                         </div>
-                    ))}
+                        ))}
                     </ul>
+                    </div>
+                ) : (
+                    <p>No available seats</p>
+                )}
                 </div>
-            ) : (
-                <p>No available seats</p>
-            )}
-            </div>
-        );
+            );
         };
+    
 
 
     return (
@@ -79,7 +108,9 @@ function User() {
             </div>
 
             <div className="\" style={{ marginTop: "20px" }}>
-                <label htmlFor="floor-select">Select a floor:</label>
+                <div className="container">
+                    <h5>Select a floor:</h5>
+                
                 <select id="floor-select" value={selectedFloor} onChange={handleFloorChange}>
                     {floorOptions.map((floor) => (
                     <option key={floor} value={floor}>
@@ -87,6 +118,7 @@ function User() {
                     </option>
                     ))}
                 </select>
+                </div>
                 <div className="availableseatsbutton">
                     <button onClick={handleAvailableSeatsClick}>Available Seats</button>
                 </div>

@@ -39,14 +39,7 @@ function Login() {
         if (userData.password !== pass.value) {
             setErrorMessages({ name: "pass", message: errors1.pass });
         } else {
-            if(userData.isManager){
-                console.log(userData.isManager);
-                navigate('/manager')
-            }
-            else{
-                console.log(userData.isManager);
-                navigate('/user')
-            }
+            navigate('/user')
         }
         } else {
         setErrorMessages({ name: "uname", message: errors1.uname });
