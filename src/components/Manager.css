@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar-brand {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #007bff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-text a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .navbar-text {
+        margin-top: 10px;
+    }
+}
