@@ -1,0 +1,25 @@
+.user-container {
+    margin: 20px;
+}
+
+.floor-select-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.floor-select {
+    margin-bottom: 10px;
+}
+
+.available-seats {
+    margin-top: 20px;
+}
+
+.available-seats ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.available-seats li {
+    margin-bottom: 5px;
+}
