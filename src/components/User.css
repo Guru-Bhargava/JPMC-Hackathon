@@ -1,3 +1,5 @@
+/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,44 +7,9 @@ body {
     background-color: #f8f8f8;
 }
 
-
 .select-container {
     margin-top: 20px;
     text-align: center;
-}
-
-
-.availableseatsbutton button {
-    background-color: #337ab7;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-label {
-    margin-right: 5px;
-}
-
-select {
-    padding: 5px;
-    font-size: 16px;
-}
-
-.availableseatsbutton {
-    text-align: center;
-    margin-top: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
 }
 
 ul {
@@ -69,14 +36,7 @@ p {
     }
 }
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-
+/* Navbar Styles */
 
 .navbar {
     background-color: #007bff;
@@ -100,45 +60,50 @@ p {
     text-decoration: none;
 }
 
+/* Container Styles */
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-    
 }
 
+/* Select Styles */
 
+label {
+    margin-right: 5px;
+}
 
-
-.floor-select {
-    padding: 8px 16px;
+select {
+    padding: 5px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
 }
 
-.available-seats-button {
+/* Available Seats Button Styles */
+
+.availableseatsbutton {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
-.available-seats-button button {
-    padding: 12px 24px;
-    font-size: 18px;
+.availableseatsbutton button {
+    background-color: #337ab7;
+    color: white;
+    font-size: 16px;
     font-weight: bold;
-    background-color: #007bff;
-    color: #fff;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.available-seats-button button:hover {
+.availableseatsbutton button:hover {
     background-color: #0056b3;
 }
+
+/* Seat List Styles */
 
 .seat-list {
     display: flex;
@@ -146,9 +111,7 @@ p {
     justify-content: center;
 }
 
-.available-seats-button button:hover {
-    background-color: #0056b3;
-}
+/* Seat Container Styles */
 
 .seat-container {
     display: flex;
@@ -165,7 +128,7 @@ p {
 .seat-container:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: grey;
+    background-color: #f1f1f1;
 }
 
 .seat-image {
@@ -186,18 +149,7 @@ p {
     color: #777;
 }
 
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-    }
-
-    .navbar-text {
-        margin-top: 10px;
-    }
-}
-
-
-
+/* Floor Select Styles */
 
 .floor-select-container {
     margin-bottom: 20px;
@@ -209,4 +161,50 @@ p {
 .floor-select-label {
     font-size: 18px;
     margin-right: 10px;
+}
+
+.floor-select {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Seat Grid Styles */
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.seat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #838189;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.seat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+}
+
+.seat-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.seat-number {
+    font-weight: bold;
+    font-size: 16px;
 }

@@ -15,7 +15,7 @@ function User() {
     const handleAvailableSeatsClick = () => {
             const seatsByFloor = {
             1: ["1.001","1.002","1.003","1.004","1.005","1.006","1.007"],
-            2: ["2.001","2.002","2.003","2.004","2.005","2.006","2.007"],
+            2: ["2.001","2.002","2.003","2.004","2.005","2.006","2.007","2.008"],
             3: [],
             4: ["4.001","4.002","4.003","4.004","4.005","4.006","4.007"],
             5: ["5.001","5.002","5.003","5.004","5.005","5.006","5.007"],
@@ -37,57 +37,37 @@ function User() {
     };
 
     const floorOptions = Array.from({ length: 15 }, (_, index) => index + 1);
-    // console.log(floorOptions);
-
     
-    // const renderFloorSeats = () => {
-    //     return (
-    //         <div>
-    //         {availableSeats.length > 0 ? (
-    //             <div>
-    //                 <p>Floor {selectedFloor}: Total of {availableSeats.length} seats are available</p>
-    //                 <ul>
-    //                 {availableSeats.map((seat) => (
-    //                     <div>
-    //                         {seat}
-    //                     </div>
-    //                 ))}
-    //                 </ul>
-    //             </div>
-    //         ) : (
-    //             <p>No available seats</p>
-    //         )}
-    //         </div>
-    //     );
-    //     };
+    
     const renderFloorSeats = () => {
         return (
+            <div>
+            {availableSeats.length > 0 ? (
                 <div>
-                {availableSeats.length > 0 ? (
-                    <div>
-                    <p>
-                        Floor {selectedFloor}: Total of {availableSeats.length} seats
-                        are available
-                    </p>
-                    <ul>
-                        {availableSeats.map((seat) => (
-                        <div className="seat-container" key={seat}>
-                            <img
-                            src="https://previews.123rf.com/images/ruslanraqimov/ruslanraqimov2001/ruslanraqimov200100027/136976529-isolated-sport-car-seat-vector-10-eps.jpg"
-                            alt="Seat"
-                            className="seat-image"
-                            />
-                            <span className="seat-number">{seat}</span>
-                        </div>
-                        ))}
-                    </ul>
+                <p>
+                    Floor {selectedFloor}: Total of {availableSeats.length} seats
+                    are available
+                </p>
+                <div className="seat-grid">
+                    {availableSeats.map((seat) => (
+                    <div className="seat-card" key={seat}>
+                        <div className="seat-number">{seat}</div>
+                        <img
+                        className="seat-image"
+                        src="https://previews.123rf.com/images/ruslanraqimov/ruslanraqimov2001/ruslanraqimov200100027/136976529-isolated-sport-car-seat-vector-10-eps.jpg"
+                        alt={`Seat ${seat}`}
+                        />
                     </div>
-                ) : (
-                    <p>No available seats</p>
-                )}
+                    ))}
                 </div>
-            );
-        };
+                </div>
+            ) : (
+                <p>No available seats</p>
+            )}
+            </div>
+        );
+    };
+
     
 
 

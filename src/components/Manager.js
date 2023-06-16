@@ -57,6 +57,7 @@ function Manager() {
     { sid: "K928808", seatno: 2082, name: "Anitya" },
     { sid: "V737808", seatno: 2073, name: "Ray" },
     { sid: "M93808", seatno: 2064, name: "Ankitha" },
+    { sid: "G74808", seatno: "Not in The Office", name: "Khan" },
   ];
 
   const handleCardClick = (sid) => {

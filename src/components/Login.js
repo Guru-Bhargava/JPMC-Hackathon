@@ -1,86 +1,83 @@
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form"; 
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
-import "./Styles.css";
+import "./Login.css";
 
 function Login() {
-    const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  let navigate = useNavigate();
+  var isFulfilled = false;
+  var isRejected = true;
 
+  const onFormSubmit = (loginData) => {
+    const { username, password } = loginData;
+    const validUsername = "user123";
+    const validPassword = "pwd123";
 
-    const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    if (username === validUsername && password === validPassword) {
+      isFulfilled = true;
+      isRejected = false;
+      navigate("/user");
+    } else {
+      alert("Wrong credentials");
+    }
+  };
 
-    const database = [
-        {
-            username: "N787808",
-            password: "pwd1",
-            isManager:1,
-        },
-        {
-            username: "N787809",
-            password: "pwd2",
-            isManager:0,
-        },
-    ];
+  useEffect(() => {
+    if (isFulfilled) {
+      navigate("/user");
+    }
+  }, [isFulfilled, isRejected]);
 
-    const errors1 = {
-        uname: "invalid username",
-        pass: "invalid password",
-    };
-
-    const handleSubmit1 = (event) => {
-        event.preventDefault();
-        var { uname, pass } = document.forms[0];
-
-        const userData = database.find((user) => user.username === uname.value);
-
-        if (userData) {
-        if (userData.password !== pass.value) {
-            setErrorMessages({ name: "pass", message: errors1.pass });
-        } else {
-            navigate('/user')
-        }
-        } else {
-        setErrorMessages({ name: "uname", message: errors1.uname });
-        }
-    };
-
-    const renderErrorMessage = (name) =>
-        name === errorMessages.name && (
-        <div className="error">{errorMessages.message}</div>
-        );
-
-    const renderForm = (
-        <div className="form">
-        <form onSubmit={handleSubmit1}>
-            <div className="input-container">
-            <label>Username </label>
-            <input type="text" name="uname" required />
-            {renderErrorMessage("uname")}
-            </div>
-            <div className="input-container">
-            <label>Password </label>
-            <input type="password" name="pass" required />
-            {renderErrorMessage("pass")}
-            </div>
-            <div className="button-container">
-            <input type="submit" />
-            </div>
+  return (
+    <>
+      <div className="login-container">
+        <h1 className="display-4 text-center">Login</h1>
+        <hr className="divider" />
+        <form
+          onSubmit={handleSubmit(onFormSubmit)}
+          className="login-form"
+        >
+          <div className="form-group">
+            <label htmlFor="username" className="form-label">
+              Username
+            </label>
+            <input
+              type="text"
+              className={`form-control ${errors.username && "is-invalid"}`}
+              {...register("username", { required: true })}
+            />
+            {errors.username && (
+              <span className="error-message">Username is required</span>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className={`form-control ${errors.password && "is-invalid"}`}
+              {...register("password", { required: true })}
+            />
+            {errors.password && (
+              <span className="error-message">Password is required</span>
+            )}
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </div>
         </form>
-        </div>
-    );
-
-    return (
-        <div>
-            <div className="app">
-            <div className="login-form">
-                <div className="title">Sign In</div>
-                {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-            </div>
-            </div>
-        </div>
-    );
+      </div>
+    </>
+  );
 }
 
 export default Login;
