@@ -5,14 +5,11 @@ import Login from "./components/Login";
 import User from "./components/User";
 import Manager from "./components/Manager";
 
-
-
 function App() {
   return (
     <div>
-      
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/user" element={<User />} />
         <Route path="/manager" element={<Manager />} />
       </Routes>
