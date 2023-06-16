@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import { Nav } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import { Fab } from "@material-ui/core";
 import "./User.css";
 
 function User() {
+  let navigate = useNavigate();
   const [selectedFloor, setSelectedFloor] = useState(1);
   const [availableSeats, setAvailableSeats] = useState([]);
+
+  const onClickChange = () => {
+    navigate("/manager");
+  };
 
   const handleFloorChange = (event) => {
     setSelectedFloor(parseInt(event.target.value));
@@ -142,16 +149,16 @@ function User() {
       </div>
 
       <div className="\" style={{ marginTop: "20px" }}>
-        <div className="container ">
+        <div className="container  justify-content-end">
           <Fab
             variant="extended"
-            size="medium"
-            color="primary"
-            aria-label="add"
+            className="bg-dark text-white"
+            onClick={onClickChange}
           >
-            Extended
+            Find My Team
           </Fab>
         </div>
+
         <div className="container">
           <h5>Select a floor:</h5>
 
